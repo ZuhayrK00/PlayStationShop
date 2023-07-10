@@ -1,3 +1,5 @@
+// GameDetails.js
+
 import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
@@ -12,7 +14,6 @@ const GameDetailsContainer = styled.div`
   text-align: center;
 `;
 
-
 const GameTitle = styled.h2`
   color: #333;
   display: flex;
@@ -20,7 +21,6 @@ const GameTitle = styled.h2`
   justify-content: space-evenly;
   align-items: center;
 `;
-
 
 const GameDescription = styled.p`
   color: #666;
@@ -31,7 +31,7 @@ const GameDescription = styled.p`
 `;
 
 const Cover = styled.img`
-height: 150px;
+  height: 150px;
 `;
 
 const GameDetails = () => {
@@ -45,7 +45,9 @@ const GameDetails = () => {
 
   return (
     <GameDetailsContainer>
-      <GameTitle>{game.name} <Cover src={game.image} alt="Game Cover" /></GameTitle>
+      <GameTitle>
+        {game.name} <Cover src={game.image} alt="Game Cover" />
+      </GameTitle>
       <GameDescription>{game.description}</GameDescription>
       <b>Price: £{game.price}</b>
     </GameDetailsContainer>

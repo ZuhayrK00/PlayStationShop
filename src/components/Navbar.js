@@ -32,10 +32,10 @@ const NavLink = styled(Link)`
 
 const Logo = styled.img`
   height: 25px;
-  margin-left: 30%;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-top: 0.9%;
 `;
-
-
 
 const Navbar = ({ basketItems }) => {
   const totalItems = basketItems.reduce((acc, item) => acc + item.quantity, 0);
@@ -48,6 +48,9 @@ const Navbar = ({ basketItems }) => {
         </NavMenuItem>
         <NavMenuItem>
           <NavLink to="/basket">Basket ({totalItems})</NavLink>
+        </NavMenuItem>
+        <NavMenuItem>
+          <NavLink to="/checkout">Checkout</NavLink>
         </NavMenuItem>
       </NavMenu>
       <Logo src="https://logodix.com/logo/411515.png" />

@@ -1,9 +1,9 @@
+// ProductList.js
+
 import React from "react";
 import styled from "styled-components";
 import games from "../data/games";
 import { Link } from "react-router-dom";
-
-
 
 const ProductsContainer = styled.div`
   display: flex;
@@ -14,9 +14,10 @@ const ProductsContainer = styled.div`
 
 const ProductBox = styled.div`
   width: 250px;
-  border: 1px solid #ccc;
+  border: 1px solid #003791;
   padding: 16px;
   margin: 10px;
+  text-align: center;
 `;
 
 const ProductName = styled.h3`
@@ -57,9 +58,9 @@ const StyledLink = styled(Link)`
 `;
 
 const Cover = styled.img`
-height: 100px;
-align-items: end;
-`
+  height: 100px;
+  align-items: end;
+`;
 
 const ProductList = ({ addToBasket }) => {
   const handleAddToBasket = (product) => {

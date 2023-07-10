@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+// ProductContainer.js
+
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductList from "../components/ProductList";
 import Basket from "../components/Basket";
 import Navbar from "../components/Navbar";
 import GameDetails from "../components/GameDetails";
+import Checkout from "../components/Checkout";
 
 const ProductContainer = () => {
   const [basket, setBasket] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const calculateTotal = () => {
+      const totalPrice = basket.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+      setTotal(totalPrice);
+    };
+    calculateTotal();
+  }, [basket]);
 
   const addToBasket = (product) => {
     const existingItem = basket.find((item) => item.id === product.id);
@@ -43,6 +58,10 @@ const ProductContainer = () => {
           element={<Basket basketItems={basket} removeItem={removeItem} />}
         />
         <Route path="/games/:id" element={<GameDetails />} />
+        <Route
+          path="/checkout"
+          element={<Checkout total={total} basketItems={basket} />}
+        />
       </Routes>
     </Router>
   );
