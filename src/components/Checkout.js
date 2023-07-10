@@ -132,18 +132,16 @@ const CloseButton = styled.button`
 `;
 
 const Checkout = ({ total, basketItems }) => {
-  const [showPopup, setShowPopup] = useState(false); // State to control the visibility of the popup
+  const [showPopup, setShowPopup] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform any necessary form submission logic here
-    // For demonstration purposes, we'll just show the popup message
     setShowPopup(true);
   };
 
   const handleClosePopup = () => {
     setShowPopup(false);
-    window.location.reload(); // Refresh the page
+    window.location.reload(); 
   };
 
   return (

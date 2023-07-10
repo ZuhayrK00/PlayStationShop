@@ -1,5 +1,3 @@
-// ProductList.js
-
 import React from "react";
 import styled from "styled-components";
 import games from "../data/games";

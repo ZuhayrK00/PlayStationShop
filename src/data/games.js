@@ -1,4 +1,3 @@
-// data/games.js
 const games = [
   {
     id: 1,
