@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const CheckoutContainer = styled.div`
   display: flex;
   justify-content: space-between;
   font-family: "Proxima Nova", Arial, Helvetica, sans-serif;
-
   position: relative;
 
   &::after {
@@ -95,13 +94,64 @@ const CheckoutTitle = styled.h1`
   font-family: "Proxima Nova", Arial, Helvetica, sans-serif;
 `;
 
+const Popup = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const PopupContent = styled.div`
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+`;
+
+const PopupMessage = styled.p`
+  font-size: 18px;
+  margin-bottom: 20px;
+`;
+
+const CloseButton = styled.button`
+  background-color: #003791;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-family: "Proxima Nova", Arial, Helvetica, sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #024fcc;
+  }
+`;
+
 const Checkout = ({ total, basketItems }) => {
+  const [showPopup, setShowPopup] = useState(false); // State to control the visibility of the popup
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform any necessary form submission logic here
+    // For demonstration purposes, we'll just show the popup message
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    window.location.reload(); // Refresh the page
+  };
+
   return (
     <div>
       <CheckoutTitle>Checkout</CheckoutTitle>
 
       <CheckoutContainer>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Label>
             First Name:
             <Input type="text" />
@@ -149,6 +199,15 @@ const Checkout = ({ total, basketItems }) => {
           </Total>
         </GameListContainer>
       </CheckoutContainer>
+
+      {showPopup && (
+        <Popup>
+          <PopupContent>
+            <PopupMessage>Thank you for your purchase!</PopupMessage>
+            <CloseButton onClick={handleClosePopup}>Close</CloseButton>
+          </PopupContent>
+        </Popup>
+      )}
     </div>
   );
 };
